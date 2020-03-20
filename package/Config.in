@@ -1609,6 +1609,7 @@ menu "Multimedia"
 endmenu
 
 menu "Networking"
+	source "package/ethoslip_tun/Config.in"
 	source "package/agentpp/Config.in"
 	source "package/azmq/Config.in"
 	source "package/azure-iot-sdk-c/Config.in"
