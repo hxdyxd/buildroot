@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-ETHOSLIP_TUN_VERSION = v0.3
+ETHOSLIP_TUN_VERSION = v0.4
 ETHOSLIP_TUN_SITE = $(call github,hxdyxd,ethoslip_tun,$(ETHOSLIP_TUN_VERSION))
 
 define ETHOSLIP_TUN_BUILD_CMDS
