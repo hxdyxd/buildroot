@@ -1,0 +1,7 @@
+config BR2_PACKAGE_ARMEMULATOR
+        bool "armemulator"
+        help
+          arm emulator tool support
+
+          https://github.com/hxdyxd/arm_emulator
+

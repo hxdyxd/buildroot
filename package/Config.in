@@ -1609,7 +1609,6 @@ menu "Multimedia"
 endmenu
 
 menu "Networking"
-	source "package/ethoslip_tun/Config.in"
 	source "package/agentpp/Config.in"
 	source "package/azmq/Config.in"
 	source "package/azure-iot-sdk-c/Config.in"
@@ -2276,6 +2275,7 @@ endmenu
 menu "System tools"
 	source "package/acl/Config.in"
 	source "package/android-tools/Config.in"
+	source "package/armemulator/Config.in"
 	source "package/atop/Config.in"
 	source "package/attr/Config.in"
 	source "package/audit/Config.in"

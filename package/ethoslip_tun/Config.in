@@ -1,7 +1,0 @@
-config BR2_PACKAGE_ETHOSLIP_TUN
-        bool "ethoslip_tun"
-        help
-          ethoslip_tun tool support
-
-          https://github.com/hxdyxd/ethoslip_tun
-
