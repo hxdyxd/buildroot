@@ -4,11 +4,15 @@
 #
 ################################################################################
 
-ARMEMULATOR_VERSION = v0.1
-ARMEMULATOR_SITE = $(call github,hxdyxd,arm_emulator,$(ARMEMULATOR_VERSION))
+ARMEMULATOR_VERSION = v0.2
+ARMEMULATOR_SITE = https://github.com/hxdyxd/arm_emulator.git
+ARMEMULATOR_SITE_METHOD=git
+ARMEMULATOR_GIT_SUBMODULES = YES
+ARMEMULATOR_DEPENDENCIES = host-pkgconf libglib2
 
 define ARMEMULATOR_BUILD_CMDS
-    $(MAKE) $(TARGET_CONFIGURE_OPTS) LD=$(TARGET_CC) -C $(@D) all
+    $(TARGET_CONFIGURE_OPTS) $(MAKE) CROSS_COMPILE=$(TARGET_CROSS) \
+		GIT_TAGS=$(ARMEMULATOR_VERSION) -C $(@D) all
 endef
 
 
