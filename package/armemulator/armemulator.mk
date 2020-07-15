@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-ARMEMULATOR_VERSION = v0.2
+ARMEMULATOR_VERSION = b92fea93105149e45c37f909c2fa8040546b19ab
 ARMEMULATOR_SITE = https://github.com/hxdyxd/arm_emulator.git
 ARMEMULATOR_SITE_METHOD=git
 ARMEMULATOR_GIT_SUBMODULES = YES
