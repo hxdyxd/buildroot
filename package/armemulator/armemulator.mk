@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-ARMEMULATOR_VERSION = b92fea93105149e45c37f909c2fa8040546b19ab
+ARMEMULATOR_VERSION = 953ba54cd5abf9dd471d555c7764a68b005470fc
 ARMEMULATOR_SITE = https://github.com/hxdyxd/arm_emulator.git
 ARMEMULATOR_SITE_METHOD=git
 ARMEMULATOR_GIT_SUBMODULES = YES
@@ -17,8 +17,8 @@ endef
 
 
 define ARMEMULATOR_INSTALL_TARGET_CMDS
-    $(INSTALL) -D -m 0755 $(@D)/armemulator $(TARGET_DIR)/usr/bin
-	$(INSTALL) -D -m 0755 $(@D)/S39slip $(TARGET_DIR)/etc/init.d
+    $(INSTALL) -D -m 0755 $(@D)/armemulator $(TARGET_DIR)/usr/bin/armemulator
+    $(INSTALL) -D -m 0755 $(@D)/S39slip $(TARGET_DIR)/etc/init.d/S39slip
 endef
 
 
