@@ -4,11 +4,18 @@
 #
 ################################################################################
 
-COREUTILS_VERSION = 8.31
+COREUTILS_VERSION = 8.32
 COREUTILS_SITE = $(BR2_GNU_MIRROR)/coreutils
 COREUTILS_SOURCE = coreutils-$(COREUTILS_VERSION).tar.xz
 COREUTILS_LICENSE = GPL-3.0+
 COREUTILS_LICENSE_FILES = COPYING
+COREUTILS_CPE_ID_VENDOR = gnu
+# Only when including SUSE coreutils-i18n.patch
+COREUTILS_IGNORE_CVES = CVE-2013-0221
+COREUTILS_IGNORE_CVES += CVE-2013-0222
+COREUTILS_IGNORE_CVES += CVE-2013-0223
+# We're patching m4/pthread-cond.m4
+COREUTILS_AUTORECONF = YES
 
 COREUTILS_CONF_OPTS = --disable-rpath \
 	$(if $(BR2_TOOLCHAIN_USES_MUSL),--with-included-regex)

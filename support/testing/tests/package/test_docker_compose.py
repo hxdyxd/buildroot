@@ -20,7 +20,6 @@ class TestDockerCompose(infra.basetest.BRTest):
         BR2_LINUX_KERNEL_USE_CUSTOM_CONFIG=y
         BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE="{}"
         BR2_PACKAGE_CA_CERTIFICATES=y
-        BR2_PACKAGE_CGROUPFS_MOUNT=y
         BR2_PACKAGE_DOCKER_CLI=y
         BR2_PACKAGE_DOCKER_COMPOSE=y
         BR2_PACKAGE_DOCKER_ENGINE=y
@@ -38,13 +37,16 @@ class TestDockerCompose(infra.basetest.BRTest):
 
     def docker_test(self):
         # will download container if not available, which may take some time
-        _, exit_code = self.emulator.run('docker run --rm busybox:latest /bin/true', 120)
+        _, exit_code = self.emulator.run('docker run --rm -p 8888:8888 busybox:latest /bin/true', 120)
         self.assertEqual(exit_code, 0)
 
     def docker_compose_test(self):
         # will download container if not available, which may take some time
-        _, exit_code = self.emulator.run('docker-compose up', 120)
-        self.assertEqual(exit_code, 0)
+        self.assertRunOk('docker-compose up -d', 120)
+        # container may take some time to start
+        self.assertRunOk('while ! docker inspect root_busybox_1 2>&1 >/dev/null; do sleep 1; done', 120)
+        self.assertRunOk('wget -O /tmp/busybox http://127.0.0.1/busybox', 120)
+        self.assertRunOk('cmp /bin/busybox /tmp/busybox', 120)
 
     def test_run(self):
         kernel = os.path.join(self.builddir, "images", "bzImage")
